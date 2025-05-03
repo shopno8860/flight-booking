@@ -1,0 +1,50 @@
+.confirmation-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f8f9fa;
+}
+
+.confirmation-page .card {
+  transition: transform 0.2s ease-in-out;
+}
+
+.confirmation-page .card:hover {
+  transform: translateY(-2px);
+}
+
+.confirmation-page .text-success {
+  color: #28a745 !important;
+}
+
+.confirmation-page .booking-info {
+  border-bottom: 1px solid #dee2e6;
+  padding-bottom: 1.5rem;
+}
+
+.confirmation-page .selected-seats-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.confirmation-page .badge {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+}
+
+.confirmation-page .price-details {
+  background-color: #f8f9fa;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .confirmation-page .card {
+    margin-bottom: 1rem;
+  }
+  
+  .confirmation-page .booking-info {
+    padding-bottom: 1rem;
+  }
+} 

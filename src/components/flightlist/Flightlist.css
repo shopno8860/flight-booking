@@ -1,0 +1,43 @@
+.flight-list-page {
+    min-height: 100vh;
+  }
+  
+  .flight-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .flight-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+  }
+  
+  .flight-duration::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: #dee2e6;
+    z-index: 1;
+  }
+  
+  .flight-duration .text-primary {
+    position: relative;
+    z-index: 2;
+    background-color: #f8f9fa;
+    padding: 0 0.5rem;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .flight-card {
+      margin-bottom: 1rem;
+    }
+  
+    .airline-logo {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 1rem;
+    }
+  }
