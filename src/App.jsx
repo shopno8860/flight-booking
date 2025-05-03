@@ -11,7 +11,7 @@ import Confirmation from './components/confirmation/Confirmation'
 
 function App() {
   return (
-    <Router>
+    <Router basename="/flight-booking">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
