@@ -1,10 +1,8 @@
 import React from 'react';
-import { Container, Row, Col, Card, Button, Badge, ListGroup } from 'react-bootstrap';
-import { FaPlane, FaClock, FaRegCalendarAlt, FaRegUser, FaPlaneDeparture, FaPlaneArrival } from 'react-icons/fa';
+import { FaPlane, FaClock, FaPlaneDeparture, FaPlaneArrival } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import Header from '../header/Header';
 import Footer from '../footer/Footer';
-import './FlightList.css';
 
 const FlightList = () => {
   const navigate = useNavigate();
@@ -84,108 +82,128 @@ const FlightList = () => {
   };
 
   return (
-    <div className="flight-list-page bg-light">
+    <div className="min-h-screen bg-gray-50">
       <Header />
       
-      <Container className="py-5">
-        <Row className="mb-4">
-          <Col>
-            <h1 className="display-5 fw-bold text-primary">Available Flights</h1>
-            <p className="lead text-muted">Select your preferred flight from the options below</p>
-          </Col>
-        </Row>
+      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12'>
+        {/* Header */}
+        <div className='mb-8'>
+          <h1 className='text-4xl font-bold text-secondary-900 mb-3'>Available Flights</h1>
+          <p className='text-lg text-gray-600'>Select your preferred flight from the options below</p>
+        </div>
 
-        <Row className="g-4">
+        {/* Flight Cards */}
+        <div className='space-y-6'>
           {flights.map((flight) => (
-            <Col key={flight.id} md={12}>
-              <Card className="flight-card h-100 border-0 shadow-sm">
-                <Card.Body className="p-4">
-                  <Row className="align-items-center g-4">
-                    <Col md={2} className="text-center">
-                      <div className="airline-logo bg-light rounded-circle p-3 mb-3">
-                        <FaPlane className="text-primary" size={40} />
+            <div key={flight.id} className='bg-white rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden'>
+              <div className='p-6'>
+                <div className='grid md:grid-cols-12 gap-6 items-center'>
+                  
+                  {/* Airline Info */}
+                  <div className='md:col-span-2 text-center border-r border-gray-100'>
+                    <div className='bg-primary-50 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-3'>
+                      <FaPlane className='text-primary-500 text-3xl' />
+                    </div>
+                    <h5 className='font-bold text-secondary-900 mb-1'>{flight.airline}</h5>
+                    <p className='text-sm text-gray-600'>{flight.flightNumber}</p>
+                  </div>
+
+                  {/* Flight Details */}
+                  <div className='md:col-span-6 border-r border-gray-100'>
+                    <div className='grid grid-cols-3 gap-4 items-center'>
+                      {/* Departure */}
+                      <div>
+                        <div className='mb-2'>
+                          <h4 className='text-xl font-bold text-secondary-900'>{flight.departure.time}</h4>
+                          <div className='flex items-center gap-2 mt-1'>
+                            <FaPlaneDeparture className='text-primary-500 text-lg' />
+                            <div className='text-sm'>
+                              <p className='font-semibold text-gray-900'>{flight.departure.city}</p>
+                              <p className='text-gray-500'>{flight.departure.airport}</p>
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                      <h5 className="mb-1 fw-bold">{flight.airline}</h5>
-                      <small className="text-muted">{flight.flightNumber}</small>
-                    </Col>
 
-                    <Col md={7}>
-                      <Row className="align-items-center g-4">
-                        <Col md={5}>
-                          <div className="flight-time">
-                            <h4 className="mb-1 fw-bold">{flight.departure.time}</h4>
-                            <div className="d-flex align-items-center gap-2">
-                              <FaPlaneDeparture className="text-primary" />
-                              <small className="text-muted">{flight.departure.city} ({flight.departure.airport})</small>
-                            </div>
-                          </div>
-                        </Col>
-
-                        <Col md={2} className="text-center">
-                          <div className="flight-duration position-relative">
-                            <div className="d-flex flex-column align-items-center">
-                              <FaClock className="text-primary mb-2" />
-                              <p className="mb-0 small fw-bold">{flight.duration}</p>
-                              {flight.stops > 0 && (
-                                <Badge bg="light" text="dark" className="mt-2">
-                                  {flight.stops} {flight.stops === 1 ? 'stop' : 'stops'}
-                                </Badge>
-                              )}
-                            </div>
-                          </div>
-                        </Col>
-
-                        <Col md={5}>
-                          <div className="flight-time text-end">
-                            <h4 className="mb-1 fw-bold">{flight.arrival.time}</h4>
-                            <div className="d-flex align-items-center justify-content-end gap-2">
-                              <small className="text-muted">{flight.arrival.city} ({flight.arrival.airport})</small>
-                              <FaPlaneArrival className="text-primary" />
-                            </div>
-                          </div>
-                        </Col>
-                      </Row>
-                    </Col>
-
-                    <Col md={3}>
-                      <div className="flight-price text-center">
-                        <h3 className="text-primary mb-3 fw-bold">${flight.price}</h3>
-                        <ListGroup className="mb-3">
-                          <ListGroup.Item className="d-flex justify-content-between align-items-center">
-                            <span className="text-muted">Class</span>
-                            <Badge bg="info" className="px-2 py-1">
-                              {flight.class}
-                            </Badge>
-                          </ListGroup.Item>
-                          <ListGroup.Item className="d-flex justify-content-between align-items-center">
-                            <span className="text-muted">Date</span>
-                            <Badge bg="info" className="px-2 py-1">
-                              {flight.departure.date}
-                            </Badge>
-                          </ListGroup.Item>
-                          <ListGroup.Item className="d-flex justify-content-between align-items-center">
-                            <span className="text-muted">Seats Left</span>
-                            <Badge bg={flight.seatsLeft < 5 ? "danger" : "success"} className="px-2 py-1">
-                              {flight.seatsLeft}
-                            </Badge>
-                          </ListGroup.Item>
-                        </ListGroup>
-                        <Button 
-                          variant="primary" 
-                          className="w-100"
-                          onClick={() => handleSelectFlight(flight)}
-                        >
-                          Select Flight
-                        </Button>
+                      {/* Duration */}
+                      <div className='text-center'>
+                        <div className='flex flex-col items-center'>
+                          <FaClock className='text-primary-500 mb-2 text-lg' />
+                          <p className='font-bold text-secondary-900 text-sm'>{flight.duration}</p>
+                          {flight.stops > 0 && (
+                            <span className='inline-block mt-2 px-3 py-1 bg-gray-100 text-gray-700 text-xs font-semibold rounded-full'>
+                              {flight.stops} {flight.stops === 1 ? 'stop' : 'stops'}
+                            </span>
+                          )}
+                          {flight.stops === 0 && (
+                            <span className='inline-block mt-2 px-3 py-1 bg-success-50 text-success-700 text-xs font-semibold rounded-full'>
+                              Non-stop
+                            </span>
+                          )}
+                        </div>
                       </div>
-                    </Col>
-                  </Row>
-                </Card.Body>
-              </Card>
-            </Col>
+
+                      {/* Arrival */}
+                      <div className='text-right'>
+                        <div className='mb-2'>
+                          <h4 className='text-xl font-bold text-secondary-900'>{flight.arrival.time}</h4>
+                          <div className='flex items-center justify-end gap-2 mt-1'>
+                            <div className='text-sm text-right'>
+                              <p className='font-semibold text-gray-900'>{flight.arrival.city}</p>
+                              <p className='text-gray-500'>{flight.arrival.airport}</p>
+                            </div>
+                            <FaPlaneArrival className='text-primary-500 text-lg' />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Price & Action */}
+                  <div className='md:col-span-4'>
+                    <div className='bg-gradient-to-br from-primary-50 to-primary-100 rounded-xl p-4'>
+                      <h3 className='text-3xl font-bold text-primary-600 mb-4 text-center'>${flight.price}</h3>
+                      
+                      <div className='space-y-2 mb-4'>
+                        <div className='flex justify-between items-center text-sm'>
+                          <span className='text-gray-700'>Class:</span>
+                          <span className='px-3 py-1 bg-primary-200 text-primary-900 font-semibold rounded-lg text-xs'>
+                            {flight.class}
+                          </span>
+                        </div>
+                        <div className='flex justify-between items-center text-sm'>
+                          <span className='text-gray-700'>Date:</span>
+                          <span className='px-3 py-1 bg-primary-200 text-primary-900 font-semibold rounded-lg text-xs'>
+                            {flight.departure.date}
+                          </span>
+                        </div>
+                        <div className='flex justify-between items-center text-sm'>
+                          <span className='text-gray-700'>Seats Left:</span>
+                          <span className={`px-3 py-1 rounded-lg text-xs font-semibold ${
+                            flight.seatsLeft < 5 
+                              ? 'bg-red-200 text-red-900' 
+                              : 'bg-success-200 text-success-900'
+                          }`}>
+                            {flight.seatsLeft}
+                          </span>
+                        </div>
+                      </div>
+
+                      <button 
+                        onClick={() => handleSelectFlight(flight)}
+                        className='btn-primary w-full'
+                      >
+                        Select Flight
+                      </button>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
           ))}
-        </Row>
-      </Container>
+        </div>
+      </div>
 
       <Footer />
     </div>
