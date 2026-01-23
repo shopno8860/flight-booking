@@ -294,7 +294,7 @@ export default function Home() {
                     <h3 className='text-2xl font-bold text-secondary-900 mb-1'>Venice</h3>
                     <p className='text-gray-600 mb-4'>Italy</p>
                   </div>
-                  <div className='space-y-2'>
+                  <div className='space-y-1'>
                     <p className='text-sm font-semibold text-gray-700'>Departure Cities:</p>
                     {[1, 2, 3, 4, 5].map((i) => (
                       <p key={i} className='text-sm'>
@@ -317,7 +317,7 @@ export default function Home() {
                     <h3 className='text-2xl font-bold text-secondary-900 mb-1'>Paris</h3>
                     <p className='text-gray-600 mb-4'>France</p>
                   </div>
-                  <div className='space-y-2'>
+                  <div className='space-y-1'>
                     <p className='text-sm font-semibold text-gray-700'>Departure Cities:</p>
                     {[1, 2, 3, 4, 5].map((i) => (
                       <p key={i} className='text-sm'>
@@ -340,7 +340,7 @@ export default function Home() {
                     <h3 className='text-2xl font-bold text-secondary-900 mb-1'>London</h3>
                     <p className='text-gray-600 mb-4'>England</p>
                   </div>
-                  <div className='space-y-2'>
+                  <div className='space-y-1'>
                     <p className='text-sm font-semibold text-gray-700'>Departure Cities:</p>
                     {[1, 2, 3, 4, 5].map((i) => (
                       <p key={i} className='text-sm'>
@@ -367,16 +367,16 @@ export default function Home() {
 
           <div className='grid md:grid-cols-3 gap-8'>
             {/* Blog Card 1 */}
-            <div className='card-hover bg-white rounded-2xl overflow-hidden shadow-lg'>
-              <div className='h-64 overflow-hidden'>
+            <div className='card-hover bg-white rounded-2xl overflow-hidden shadow-lg flex flex-col h-full'>
+              <div className='h-48 overflow-hidden flex-shrink-0'>
                 <img src={home4} alt="Blog" className='w-full h-full object-cover' />
               </div>
-              <div className='p-6'>
+              <div className='p-6 flex flex-col flex-grow'>
                 <h3 className='text-xl font-bold text-secondary-900 mb-3'>9 Ways to Become a Successful Travel Blogger</h3>
-                <p className='text-gray-600 text-sm mb-4 line-clamp-3'>
+                <p className='text-gray-600 text-sm mb-6 line-clamp-3 flex-grow'>
                   Travel blogging is a crowded field — and it gets more crowded day by day. And a lot of the advice that people give are actually counterintuitive to success.
                 </p>
-                <div className='border-t pt-4 flex justify-between items-center text-sm'>
+                <div className='border-t pt-4 flex justify-between items-center text-sm mt-auto'>
                   <div className='flex items-center gap-2'>
                     <FontAwesomeIcon icon={faPenToSquare} className='text-primary-500' />
                     <span className='text-gray-600'>Article</span>
@@ -396,16 +396,16 @@ export default function Home() {
             </div>
 
             {/* Blog Card 2 */}
-            <div className='card-hover bg-white rounded-2xl overflow-hidden shadow-lg'>
-              <div className='h-64 overflow-hidden'>
+            <div className='card-hover bg-white rounded-2xl overflow-hidden shadow-lg flex flex-col h-full'>
+              <div className='h-48 overflow-hidden flex-shrink-0'>
                 <img src={home5} alt="Blog" className='w-full h-full object-cover' />
               </div>
-              <div className='p-6'>
+              <div className='p-6 flex flex-col flex-grow'>
                 <h3 className='text-xl font-bold text-secondary-900 mb-3'>Essential Travel Tips for First-Time Flyers</h3>
-                <p className='text-gray-600 text-sm mb-4 line-clamp-3'>
+                <p className='text-gray-600 text-sm mb-6 line-clamp-3 flex-grow'>
                   Planning your first flight? Here are essential tips to make your journey smooth and enjoyable, from packing to airport navigation.
                 </p>
-                <div className='border-t pt-4 flex justify-between items-center text-sm'>
+                <div className='border-t pt-4 flex justify-between items-center text-sm mt-auto'>
                   <div className='flex items-center gap-2'>
                     <FontAwesomeIcon icon={faPenToSquare} className='text-primary-500' />
                     <span className='text-gray-600'>Article</span>
@@ -425,16 +425,16 @@ export default function Home() {
             </div>
 
             {/* Blog Card 3 */}
-            <div className='card-hover bg-white rounded-2xl overflow-hidden shadow-lg'>
-              <div className='h-64 overflow-hidden'>
+            <div className='card-hover bg-white rounded-2xl overflow-hidden shadow-lg flex flex-col h-full'>
+              <div className='h-48 overflow-hidden flex-shrink-0'>
                 <img src={home6} alt="Blog" className='w-full h-full object-cover' />
               </div>
-              <div className='p-6'>
+              <div className='p-6 flex flex-col flex-grow'>
                 <h3 className='text-xl font-bold text-secondary-900 mb-3'>Top Destinations for 2024</h3>
-                <p className='text-gray-600 text-sm mb-4 line-clamp-3'>
+                <p className='text-gray-600 text-sm mb-6 line-clamp-3 flex-grow'>
                   Discover the most exciting travel destinations for the upcoming year, from hidden gems to popular hotspots that should be on your radar.
                 </p>
-                <div className='border-t pt-4 flex justify-between items-center text-sm'>
+                <div className='border-t pt-4 flex justify-between items-center text-sm mt-auto'>
                   <div className='flex items-center gap-2'>
                     <FontAwesomeIcon icon={faPenToSquare} className='text-primary-500' />
                     <span className='text-gray-600'>Article</span>
